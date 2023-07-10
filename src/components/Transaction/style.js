@@ -11,7 +11,7 @@ align-items:center;
 justify-content: space-between;
 `;
 
-Wrapper.displayName = 'TransavctionWrapper'
+Wrapper.displayName = 'TransactionWrapper'
 
 export const TransactionDate = styled.div`
 flex-grow: 1;
@@ -29,3 +29,11 @@ export const Comment = styled.div`
 flex-grow: 2;
 `;
 Comment.displayName = 'Comment';
+
+export const Icon = styled.span`
+img{
+    max-width: 20px;
+    margin-right: 10px;
+}
+`;
+Comment.Icon = 'Icon';

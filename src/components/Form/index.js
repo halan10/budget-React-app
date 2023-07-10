@@ -1,59 +1,60 @@
-import { Component } from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types';
-import {  TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 
-import { Wrapper, BtnSave } from './style'
+import { Wrapper, BtnSave , Row} from './style'
 
 
-class Form extends Component {
+const Form = (props) => {
+    const [form, setForm] = useState({
+        value: '',
+        date: new Date().toISOString().substring(0, 10),
+        comment: ''
+    })
 
-    constructor() {
-        super();
-        this.state = {
-            value: '',
-            date: new Date().toISOString().substring(0, 10),
-            comment: ''
-        }
-    }
-    z
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-        this.props.onChange(this.state);
-        this.setState({
+        props.onChange(form);
+        setForm({
+            ...form,
             value: '',
             comment: ''
         })
     }
 
-    onChange = (e) => {
+    const onChange = (e) => {
         const { value, name } = e.target;
-        this.setState({ [name]: name === 'balence' ? +value : value })
+        setForm({
+            ...form,
+            [name]: value
+        })
     }
-    render() {
-        return (
-            <Wrapper >
-                <form onSubmit={this.onSubmit}>
+
+    return (
+        <Wrapper >
+            <form onSubmit={onSubmit}>
 
 
-
-                      <TextField sx={{ mx: 2, my: 2 }}
+                <Row>
+                    <TextField sx={{ mx: 2, my: 2 }}
                         id="date"
                         label="Date"
                         type="date"
                         name="date"
-                        value={this.state.date}
-                        onChange={this.onChange}
+                        value={form.date}
+                        onChange={onChange}
                         InputLabelProps={{
                             shrink: true,
                         }}
-                    /> 
-                    <TextField sx={{ mx: 2, my: 2 }} name="value" type="number" id="outlined-basic" label="Summa" variant="outlined"
-                        value={this.state.value}
-                        onChange={this.onChange} /> 
-
+                    />
+                    <TextField sx={{ mx: 2, my: 2 }} name="value" type="number" id="outlined-basic" label="Sum" variant="outlined"
+                        value={form.value}
+                        onChange={onChange} />
+                </Row>
+                <Row>
                     <TextField sx={{ mx: 2, my: 2 }} name="comment" id="standard-basic" label="Coments"
-                        value={this.state.comment}
-                        onChange={this.onChange} /> 
+                        value={form.comment}
+                        onChange={onChange} />
 
 
                     {/* <Button sx={{ mx: 2, my: 2 }} size="large" variant="contained" color="secondary">
@@ -77,10 +78,10 @@ class Form extends Component {
                     value={this.state.comment}
                     onChange={this.onChange} />   */}
                     <BtnSave>Save</BtnSave>
-                </form>
-            </Wrapper>
-        )
-    }
+                </Row>
+            </form>
+        </Wrapper>
+    )
 }
 Form.propTypes = {
     name: PropTypes.func

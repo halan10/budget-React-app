@@ -3,9 +3,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Wrapper, GlobalStyle } from './style'
 import Home from '../Home'
 import About from '../About'
+import Settings from '../Settings'
 import Statistics from '../Statistics'
 import { open } from '../../utils/indexdb'
 import Header from "../Header";
+
 
 class App extends React.Component {
     constructor(props) {
@@ -50,19 +52,19 @@ class App extends React.Component {
             return <div>Loading...</div>
         };
         return (
-
-            <BrowserRouter>
-                < Wrapper>  {/* can be replace <></> or React.Fragment */}
-                    <GlobalStyle />
-                    <Header />
-                </Wrapper>
-                <Routes>
-                    <Route exect path="/" element={<Home />} />
-                    <Route path="statistics" element={<Statistics />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="*" element={<h1>Page Not Found!</h1>} />
-                </Routes>
-            </BrowserRouter>
+                <BrowserRouter>
+                    < Wrapper>  {/* can be replace <></> or React.Fragment */}
+                        <GlobalStyle />
+                        <Header />
+                    </Wrapper>
+                    <Routes>
+                        <Route exect path="/" element={<Home />} />
+                        <Route path="statistics" element={<Statistics />} />
+                        <Route path="settings" element={<Settings />} />
+                        <Route path="about" element={<About />} />
+                        <Route path="*" element={<h1>Page Not Found!</h1>} />
+                    </Routes>
+                </BrowserRouter>
         )
 
     }

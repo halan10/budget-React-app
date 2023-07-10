@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`   
+display: flex;
+justify-content: center;
 margin: 10px;
 padding: 5px;
 
 `;
-
+export const Row = styled.div`
+    display: flex;
+    align-items: center;
+`
+Row.displayName = 'Row'
 
 export const BtnSave = styled.button`   
 background-color:#0D47A1;

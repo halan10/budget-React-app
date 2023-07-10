@@ -1,63 +1,51 @@
-import React from "react";
+import { useState } from "react";
 import Balance from "../Balance";
 import Transactions from "../Transactions";
 import Form from "../Form";
-import ErrorBoundary from '../ErrorBoundary'
-import {Wrapper} from './style'
-import {getItems, addItem} from '../../utils/indexdb'
-class Home extends React.Component {
+import ErrorBoundary from '../ErrorBoundary';
+import { Wrapper } from './style';
+import { STATUSES } from "../../constants";
+import { useData } from '../../hooks';
 
-    constructor() {
-        super();
-        this.state = {
-            balance: 0,
-            transactions: []
-        }
+const Home = () => {
 
-        this.onChange = this.onChange.bind(this);
-        console.log('constructor');
+    const [balance, setBalance] = useState(0);
+    // const [transactionsOld, setTransactions] = useState([]);
+    const { transactions, status , pushTransaction,onStarClick,onDelete} = useData();
+
+    // useEffect(() => {
+    //     getItems().then((item) => {
+    //         setTransactions(item)
+    //     }).catch((e) => {
+    //         debugger
+    //     })
+
+    // }, [setTransactions]);
+
+
+    const onChange = (transaction) => {
+        pushTransaction(transaction)
+        setBalance(balance + Number(transaction.value))
     }
-
-    componentDidMount(){
-        getItems().then((transactions) => {
-            this.setState({
-                transactions
-            })
-        }).catch((e)=>{
-            debugger
-        })
-    }
-
-    onChange = ({value,date,comment}) =>{
-        const transaction ={
-            value: +value,
-            comment,
-            date,
-             id: Date.now()
-        }
-        this.setState((state)=>({
-            balance: state.balance + Number(value),
-            transactions: [
-                transaction,             
-                  ...state.transactions]
-        }));
-        addItem(transaction)
-    }
-
-    render() {
-        console.log('render')
-        return (
-            <ErrorBoundary>
+ 
+    return (
+        <ErrorBoundary>
             < Wrapper>  {/* can be replace <></> or React.Fragment */}
-                <Balance balance={this.state.balance}>Balance</Balance>
-                <Form onChange = {this.onChange}/>
-                <hr/>
-<Transactions transactions ={this.state.transactions}/>
-            </Wrapper>
-            </ErrorBoundary>
-        )
-    }
+                <Balance balance={balance} />
+                <Form onChange={onChange} />
+                <hr />
 
+                {status === STATUSES.PENDING ? (<div>Loading...</div>) : null}
+
+                {status === STATUSES.SUCSESS ? (
+                    <Transactions transactions={transactions}
+                        onDelete={onDelete}
+                        onStarClick={onStarClick} />
+                ) : null}
+
+            </Wrapper>
+        </ErrorBoundary>
+    )
 }
 
 export default Home;
