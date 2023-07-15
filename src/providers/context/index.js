@@ -11,6 +11,19 @@ const reducer = (state, action) => {
                 currency: action.currency
             }
         };
+        case 'setTheme': {
+            return{
+                ...state,
+                themeName: action.themeName
+            }
+        };
+
+        case 'setLocale': {
+            return{
+                ...state,
+                locale: action.locale
+            }
+        };
         case 'reset':{
             return defaultContext
         };

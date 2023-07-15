@@ -1,6 +1,8 @@
+import { InputLabel} from "@material-ui/core";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`   
+color: ${props => props.theme.color};
 display: flex;
 justify-content: center;
 margin: 10px;
@@ -14,7 +16,7 @@ export const Row = styled.div`
 Row.displayName = 'Row'
 
 export const BtnSave = styled.button`   
-background-color:#0D47A1;
+background-color:rgb(25, 118, 210);
 color:#000;
 font-size: 20px;
 padding: 10px 55px;
@@ -35,3 +37,10 @@ color: #010606;
 `;
 
 BtnSave.displayName = 'BtnSave';
+
+export const StyledTextField = styled(InputLabel)`
+  && {
+    color: ${props => props.theme.color};
+  }
+`;
+StyledTextField.displayName = 'StyledTextField';

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import { TextField } from '@mui/material';
+import { FormattedMessage } from "react-intl";
 
-import { Wrapper, BtnSave , Row} from './style'
+import { Wrapper, BtnSave , Row,StyledTextField} from './style'
 
 
 const Form = (props) => {
@@ -19,7 +20,9 @@ const Form = (props) => {
             ...form,
             value: '',
             comment: ''
-        })
+        });
+
+        props.onCloseFormModal();
     }
 
     const onChange = (e) => {
@@ -31,28 +34,33 @@ const Form = (props) => {
     }
 
     return (
+       
         <Wrapper >
+
+            <FormattedMessage
+            id="hello"/>
+             <StyledTextField>
             <form onSubmit={onSubmit}>
 
 
                 <Row>
                     <TextField sx={{ mx: 2, my: 2 }}
                         id="date"
-                        label="Date"
+                        label={<StyledTextField><FormattedMessage id = "form.date"/></StyledTextField>}
                         type="date"
                         name="date"
                         value={form.date}
                         onChange={onChange}
                         InputLabelProps={{
-                            shrink: true,
+                            shrink: true
                         }}
                     />
-                    <TextField sx={{ mx: 2, my: 2 }} name="value" type="number" id="outlined-basic" label="Sum" variant="outlined"
+                    <TextField sx={{ mx: 2, my: 2 }} name="value" type="number" id="outlined-basic" label={<StyledTextField><FormattedMessage id = "form.sum"/></StyledTextField>} variant="outlined"
                         value={form.value}
                         onChange={onChange} />
                 </Row>
                 <Row>
-                    <TextField sx={{ mx: 2, my: 2 }} name="comment" id="standard-basic" label="Coments"
+                    <TextField sx={{ mx: 2, my: 2 }} name="comment" id="standard-basic" label={<StyledTextField><FormattedMessage id = "form.coments"/></StyledTextField>}
                         value={form.comment}
                         onChange={onChange} />
 
@@ -77,13 +85,15 @@ const Form = (props) => {
                      <textarea name='comment'
                     value={this.state.comment}
                     onChange={this.onChange} />   */}
-                    <BtnSave>Save</BtnSave>
+                    <BtnSave ><FormattedMessage id="form.btnSave"/></BtnSave>
                 </Row>
             </form>
+            </StyledTextField>
         </Wrapper>
+        
     )
 }
 Form.propTypes = {
-    name: PropTypes.func
+    onChange: PropTypes.func
 };
 export default Form;

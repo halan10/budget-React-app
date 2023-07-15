@@ -1,6 +1,7 @@
+import { FormattedMessage } from "react-intl";
 const Balance = ({balance}) =>{
     return (<div>
-   Current balance: {balance}
+   <FormattedMessage id = "form.balance"/>: {balance}
     </div>
     )
 }

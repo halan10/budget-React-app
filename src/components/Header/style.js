@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Nav = styled.div`   
-background: linear-gradient(
+/* background: linear-gradient(
     45deg,
     hsl(272, 15%, 37%) 0%,
     hsl(193, 100%, 28%) 50%,
-    hsl(162, 95%, 77%) 100%
-  );
+    hsl(162, 95%, 77%) 100%   );*/
+
+   background: ${props => props.theme.background};
+
+
   height: 80px;
   display: flex;
   width: 100%;
@@ -32,7 +35,7 @@ background: linear-gradient(
   ul a {
     font-size: 26px;
     font-weight: 400;
-    color: #fff;
+    color: ${props => props.theme.linkColor};
     text-decoration: none;
   }
 `;

@@ -1,27 +1,45 @@
 import { Link } from "react-router-dom";
 import { Nav } from './style'
 import logo from "../images/budget.svg";
-const Header = () => (
-    <Nav>
+import { ThemeSwitch } from "../ThemeSwitch";
+import MaterialUISwitch from '../MUI_Switch/index';
+import { FormattedMessage } from "react-intl";
 
-        <ul>
-        <li className="logo">
-            <img src={logo} style={{ height: 60, width: 60 }} alt="logo" />
-        </li>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/statistics">Statistics</Link>
-            </li>
-            <li>
-                <Link to="/settings">Settings</Link>
-            </li>
-            <li>
-                <Link to="/about">About</Link>
-            </li>
-        </ul>
-    </Nav>
+import FormControlLabel from '@mui/material/FormControlLabel';
+
+const Header = () => (
+
+    <div>
+        <Nav>
+            <ul>
+                <li className="logo">
+                    <img src={logo} style={{ height: 60, width: 60 }} alt="logo" />
+                </li>
+                <li>
+                    <Link to="/"><FormattedMessage id = "menu.home"/></Link>
+                </li>
+                <li>
+                    <Link to="/statistics"><FormattedMessage id = "menu.statistics"/></Link>
+                </li>
+                <li>
+                    <Link to="/settings"><FormattedMessage id = "menu.settings"/></Link>
+                </li>
+                <li>
+                    <Link to="/about"><FormattedMessage id = "menu.about"/></Link>
+                </li>
+                <li>
+                <FormControlLabel
+        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+      />
+                </li>
+                <li><ThemeSwitch/></li>
+            </ul>
+        </Nav>
+        
+
+    </div>
+
+
 )
 
 export default Header;

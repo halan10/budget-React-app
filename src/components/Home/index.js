@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Balance from "../Balance";
 import Transactions from "../Transactions";
-import Form from "../Form";
 import ErrorBoundary from '../ErrorBoundary';
+import { ChangeBalance } from "../ChangeBalance";
+
 import { Wrapper } from './style';
 import { STATUSES } from "../../constants";
 import { useData } from '../../hooks';
@@ -32,7 +33,7 @@ const Home = () => {
         <ErrorBoundary>
             < Wrapper>  {/* can be replace <></> or React.Fragment */}
                 <Balance balance={balance} />
-                <Form onChange={onChange} />
+                <ChangeBalance onChange={onChange} />
                 <hr />
 
                 {status === STATUSES.PENDING ? (<div>Loading...</div>) : null}
