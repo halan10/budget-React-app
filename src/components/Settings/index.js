@@ -8,6 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import { LOCALES } from '../../providers/i18n';
 import {saveToStorage} from '../../utils/sessionStorage';
+import { SettingStyle, StyledTextField } from './style';
 
 
 const Test = memo(({ data }) => {
@@ -38,8 +39,11 @@ const Setting = () => {
     const data = useMemo(() => [2], []);
     return (
         <>
-            <h1>Settings</h1>
-            <Test data={data} />
+        <SettingStyle>
+                        <h1>Settings</h1>
+            <Test 
+            // data={data} 
+            />
             <Box sx={{ minWidth: 100 }}>
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Currency</InputLabel>
@@ -55,7 +59,7 @@ const Setting = () => {
                 </FormControl>
                 <FormControl fullWidth sx={{pt: 4 }}>
                     <InputLabel sx={{ pt: 5}} id="demo-simple-select-label">Language</InputLabel>
-                    <Select
+                    <Select 
                         value={state.locale}
                         label="Language"
                         onChange={onChangeLocale}
@@ -74,7 +78,9 @@ const Setting = () => {
                         </select>
                     </label> */}
                 </FormControl>
-                <div>  <br />
+                
+
+                <SettingStyle>  <br />
                     <button onClick={handleStatusChange}>Advanced settings</button>
                     {status ? (
                         <div>
@@ -85,8 +91,9 @@ const Setting = () => {
 
                     ) : null}
 
-                </div>
+                </SettingStyle>
             </Box>
+            </SettingStyle>
         </>
     )
 };

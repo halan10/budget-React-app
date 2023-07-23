@@ -25,7 +25,7 @@ const Content = styled.div`
   max-width: 80%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: white;
-  border-radius: 2px;
+  border-radius: 5px;
   transform: translateY(0);
   opacity: 1;
 `;

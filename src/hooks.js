@@ -40,7 +40,7 @@ export const useData = () => {
                 error: e
             })
         })
-    }, [])
+     }, [])
 
     const pushTransaction = useCallback((data) =>{
         const transaction = {

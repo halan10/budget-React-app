@@ -1,14 +1,16 @@
-import React from "react";
+import React, { Suspense, Susspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Wrapper, GlobalStyle } from './style'
 import Home from '../Home'
 import About from '../About'
 import Settings from '../Settings'
-import Statistics from '../Statistics'
+// import Statistics from '../Statistics'
 import { open } from '../../utils/indexdb'
 import Header from "../Header";
+import Footer from "../Footer";
 
 
+const Statistics = lazy(() => import('../Statistics'));
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -52,11 +54,12 @@ class App extends React.Component {
             return <div>Loading...</div>
         };
         return (
-                <BrowserRouter>
-                    < Wrapper>  {/* can be replace <></> or React.Fragment */}
-                        <GlobalStyle />
-                        <Header />
-                    </Wrapper>
+            <BrowserRouter>
+                < Wrapper>  {/* can be replace <></> or React.Fragment */}
+                    <GlobalStyle />
+                    <Header />
+                </Wrapper>
+                <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
                         <Route exect path="/" element={<Home />} />
                         <Route path="statistics" element={<Statistics />} />
@@ -64,7 +67,10 @@ class App extends React.Component {
                         <Route path="about" element={<About />} />
                         <Route path="*" element={<h1>Page Not Found!</h1>} />
                     </Routes>
-                </BrowserRouter>
+                     <Footer />
+                </Suspense>
+               
+            </BrowserRouter>
         )
 
     }

@@ -40,7 +40,8 @@ BtnSave.displayName = 'BtnSave';
 
 export const StyledTextField = styled(InputLabel)`
   && {
-    color: ${props => props.theme.color};
+    /* color: ${props => props.theme.color}; */
+    color: black;
   }
 `;
 StyledTextField.displayName = 'StyledTextField';

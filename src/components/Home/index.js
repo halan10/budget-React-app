@@ -7,13 +7,19 @@ import { ChangeBalance } from "../ChangeBalance";
 import { Wrapper } from './style';
 import { STATUSES } from "../../constants";
 import { useData } from '../../hooks';
-
+//import { BalanceData } from "../BalanceData";
 const Home = () => {
+    
 
-    const [balance, setBalance] = useState(0);
+     const [balance, setBalance] = useState();
     // const [transactionsOld, setTransactions] = useState([]);
-    const { transactions, status , pushTransaction,onStarClick,onDelete} = useData();
+    const {transactions, status , pushTransaction,onStarClick,onDelete} = useData();
+   
+    const sum = transactions.reduce((total, currentValue)=>total = total+currentValue.value,0);
+    console.log(sum);
 
+    //   const sum = (transactions.map(datum=>datum.value).reduce((a,b)=>a+b));
+    //   console.log(sum);
     // useEffect(() => {
     //     getItems().then((item) => {
     //         setTransactions(item)
@@ -25,14 +31,17 @@ const Home = () => {
 
 
     const onChange = (transaction) => {
-        pushTransaction(transaction)
-        setBalance(balance + Number(transaction.value))
+        pushTransaction(transaction);
+         setBalance(balance + Number(transaction.value))
     }
  
     return (
         <ErrorBoundary>
             < Wrapper>  {/* can be replace <></> or React.Fragment */}
-                <Balance balance={balance} />
+            {/* <BalanceData>
+                {(balance)=><Balance balance={balance} />}
+            </BalanceData>  */}
+            <Balance balance={sum}/>
                 <ChangeBalance onChange={onChange} />
                 <hr />
 
@@ -43,7 +52,7 @@ const Home = () => {
                         onDelete={onDelete}
                         onStarClick={onStarClick} />
                 ) : null}
-
+          
             </Wrapper>
         </ErrorBoundary>
     )

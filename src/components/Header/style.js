@@ -18,6 +18,7 @@ export const Nav = styled.div`
   z-index: 10;
 
   ul{
+    width: 100%;
     margin: 10px;
     display: flex;
     justify-content: space-between;

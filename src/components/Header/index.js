@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import { Nav } from './style'
 import logo from "../images/budget.svg";
-import { ThemeSwitch } from "../ThemeSwitch";
-import MaterialUISwitch from '../MUI_Switch/index';
+import  {ThemeSwitchUI}  from '../MUI_Switch/index';
 import { FormattedMessage } from "react-intl";
 
-import FormControlLabel from '@mui/material/FormControlLabel';
+// import FormControlLabel from '@mui/material/FormControlLabel';
 
-const Header = () => (
-
+const Header = () => {
+return(
     <div>
         <Nav>
             <ul>
@@ -28,18 +27,15 @@ const Header = () => (
                     <Link to="/about"><FormattedMessage id = "menu.about"/></Link>
                 </li>
                 <li>
-                <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-      />
+      <ThemeSwitchUI/>
                 </li>
-                <li><ThemeSwitch/></li>
             </ul>
         </Nav>
         
 
     </div>
 
-
-)
+);
+}
 
 export default Header;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import withProfiler from '../HOCs/withProfiler';
 import { Wrapper } from './style';
 
 
@@ -40,4 +41,4 @@ const Statistics = () => {
         </Wrapper>
     )
 };
-export default Statistics;
+export default withProfiler(Statistics, 'Statistics');
