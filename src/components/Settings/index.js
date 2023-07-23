@@ -45,7 +45,16 @@ const Setting = () => {
             // data={data} 
             />
             <Box sx={{ minWidth: 100 }}>
-                <FormControl fullWidth>
+                
+                
+
+                <SettingStyle>  <br />
+                    <button onClick={handleStatusChange}>Advanced settings</button>
+                    {status ? (
+                        <div>
+
+                            <h1>Advanced settings</h1>
+                            <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Currency</InputLabel>
                     <Select
                         value={state.currency}
@@ -78,15 +87,6 @@ const Setting = () => {
                         </select>
                     </label> */}
                 </FormControl>
-                
-
-                <SettingStyle>  <br />
-                    <button onClick={handleStatusChange}>Advanced settings</button>
-                    {status ? (
-                        <div>
-
-                            <h1>Advanced settings</h1>
-                            <p>...</p>
                         </div>
 
                     ) : null}

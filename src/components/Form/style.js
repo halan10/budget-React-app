@@ -11,7 +11,7 @@ padding: 5px;
 `;
 export const Row = styled.div`
     display: flex;
-    align-items: center;
+  flex-direction: column;
 `
 Row.displayName = 'Row'
 
@@ -19,9 +19,10 @@ export const BtnSave = styled.button`
 background-color:rgb(25, 118, 210);
 color:#000;
 font-size: 20px;
-padding: 10px 55px;
+padding: 10px 50px;
 border-radius: 5px;
-margin: 20px 0 16.5px 16.5px;
+margin: 20px 16.5px 16.5px 16.5px;
+width: auto;
 cursor: pointer;
 &:disabled {
   color: grey;
@@ -34,6 +35,8 @@ transition: all 0.2s ease-in-out;
 background:#6a99df ;
 color: #010606;
 }
+
+
 `;
 
 BtnSave.displayName = 'BtnSave';

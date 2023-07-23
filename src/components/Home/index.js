@@ -51,6 +51,7 @@ const Home = () => {
                     <Transactions transactions={transactions}
                         onDelete={onDelete}
                         onStarClick={onStarClick} />
+
                 ) : null}
           
             </Wrapper>

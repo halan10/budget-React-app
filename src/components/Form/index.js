@@ -58,8 +58,7 @@ const Form = (props) => {
                     <TextField sx={{ mx: 2, my: 2 }} name="value" type="number" id="outlined-basic" label={<StyledTextField><FormattedMessage id = "form.sum"/></StyledTextField>} variant="outlined"
                         value={form.value}
                         onChange={onChange} />
-                </Row>
-                <Row>
+
                     <TextField sx={{ mx: 2, my: 2 }} name="comment" id="standard-basic" label={<StyledTextField><FormattedMessage id = "form.coments"/></StyledTextField>}
                         value={form.comment}
                         onChange={onChange} />
