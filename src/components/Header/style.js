@@ -18,7 +18,7 @@ export const Nav = styled.div`
   z-index: 10;
 
   ul{
-    width: 100%;
+    width:100%;
     margin: 10px;
     display: flex;
     justify-content: space-between;
@@ -28,14 +28,15 @@ export const Nav = styled.div`
     padding:0;
   }
   li{
+    width:20%;
     margin-right: 60px;
     padding: 10px;
     
   }
 
   ul a {
-    font-size: 26px;
-    font-weight: 400;
+    font-size: 24px;
+    font-weight: 350;
     color: ${props => props.theme.linkColor};
     text-decoration: none;
   }

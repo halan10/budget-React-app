@@ -1,4 +1,4 @@
-import { memo, useMemo, useContext } from 'react';
+import { memo, useContext } from 'react';
 import { AppContext } from '../../providers/context';
 import { useBooleanToggle } from '../../hooks';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,7 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import { LOCALES } from '../../providers/i18n';
 import {saveToStorage} from '../../utils/sessionStorage';
-import { SettingStyle, StyledTextField } from './style';
+import { SettingStyle } from './style';
 
 
 const Test = memo(({ data }) => {
@@ -36,7 +36,7 @@ const Setting = () => {
         });
         saveToStorage('locale', value)
     }
-    const data = useMemo(() => [2], []);
+    // const data = useMemo(() => [2], []);
     return (
         <>
         <SettingStyle>

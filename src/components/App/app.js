@@ -1,4 +1,4 @@
-import React, { Suspense, Susspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Wrapper, GlobalStyle } from './style'
 import Home from '../Home'
@@ -6,9 +6,8 @@ import About from '../About'
 import Settings from '../Settings'
 // import Statistics from '../Statistics'
 import { open } from '../../utils/indexdb'
-import Header from "../Header";
 import Footer from "../Footer";
-
+import Navbar from "../Navbar";
 
 const Statistics = lazy(() => import('../Statistics'));
 class App extends React.Component {
@@ -57,7 +56,8 @@ class App extends React.Component {
             <BrowserRouter>
                 < Wrapper>  {/* can be replace <></> or React.Fragment */}
                     <GlobalStyle />
-                    <Header />
+                    {/* <Header /> */}
+                    <Navbar/>
                 </Wrapper>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
